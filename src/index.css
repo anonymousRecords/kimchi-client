@@ -6,9 +6,12 @@
   color: inherit;
   flex-shrink: 0;
   outline: none;
+  /* background-color: aquamarine; */
 }
 
 body {
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-height: -moz-available;
