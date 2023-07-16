@@ -44,7 +44,7 @@ export default () => {
     
     const handleStart = () => {
         localStorage.setItem('isFirstVisitor', 'true');
-        navigate('/seoul', { state: {} });
+        navigate('people', { state: {} });
     };
 
     // 초기 슬라이드가 설정되기 전에는 캐러셀이나 다른 컨텐츠 렌더링 방지
