@@ -1,18 +1,18 @@
 import Swiper from "../components/Swiper";
 import styled from 'styled-components';
 
-const StyledLanding = styled.div`
+const StyledOnboarding = styled.div`
     width: 390px;
     height: 100vh;
     background-color: red;
 `
 
-const LandingPage = () => {
+const OnboardingPage = () => {
     return (
-        <StyledLanding>
+        <StyledOnboarding>
             <Swiper/>
-        </StyledLanding>
+        </StyledOnboarding>
     );
 }
 
-export default LandingPage;
+export default OnboardingPage;
