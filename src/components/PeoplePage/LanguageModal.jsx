@@ -28,7 +28,7 @@ const ModalWrapper = styled.article`
   }
 `;
 
-export default function LanguageModal({ onHideModal }) {
+export default function LanguageModal() {
   return (
     <ModalWrapper>
         <ul>
