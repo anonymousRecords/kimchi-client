@@ -2,9 +2,14 @@ import { useRef, useCallback } from 'react'
 import Post from './Post'
 import { useInfiniteQuery } from 'react-query'
 import { getPostsPage } from '../../api/axios'
+import styled from 'styled-components';
+
+const StyeldInfiniteScroll = styled.div`
+    margin: 7.063rem 0rem 1rem 0rem;
+    padding: 0.3rem;
+`
 
 const InfiniteScroll = () => {
-
     const {
         fetchNextPage, //function 
         hasNextPage, // boolean
@@ -46,11 +51,11 @@ const InfiniteScroll = () => {
     })
 
     return (
-        <>
+        <StyeldInfiniteScroll>
             {content}
             {isFetchingNextPage && <p className="center">Loading...</p>}
             <p className="center"><a href="#top">위로 올라가기</a></p>
-        </>
+        </StyeldInfiniteScroll>
     )
 }
 export default InfiniteScroll
