@@ -25,11 +25,7 @@ export default () => {
             text: `슬라이드2`,
         },
         {
-            img: 'https://cdn.inflearn.com/public/main_sliders/f3a0a5ff-a6b0-4f3f-8afb-1b6728bf166d/40143-hero-b-desktop.png',
-            text: `슬라이드3`,
-        },
-        {
-            img: 'https://cdn.inflearn.com/public/main_sliders/f3a0a5ff-a6b0-4f3f-8afb-1b6728bf166d/40143-hero-b-desktop.png',
+            img: '/assets/icons/logo.svg',
             text: `시작하기`,
         },
     ];
