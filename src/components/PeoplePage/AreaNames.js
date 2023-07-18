@@ -1,0 +1,18 @@
+export const AreaNames = [
+  'Seoul',
+  'Busan',
+  'Daegu',
+  'Incheon',
+  'Gwangju',
+  'Ulsan',
+  'Sejong',
+  'Gyeonggi',
+  'Gangwon',
+  'Chungbuk',
+  'Chungnam',
+  'Jeonbuk',
+  'Jeonnam',
+  'Gyeongbuk',
+  'Gyeongnam',
+  'Jeju',
+];
