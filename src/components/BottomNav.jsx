@@ -3,12 +3,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const StyledBottomNav = styled.div`
-    // width: 390px;
     height: 5.188rem;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
 
     display: flex;
     justify-content: center;
