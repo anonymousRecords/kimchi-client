@@ -27,6 +27,7 @@ export default () => {
         {
             img: '/assets/icons/logo.svg',
             text: `시작하기`,
+            message: 'For foreigner, Tour-Photo social media.',
         },
     ];
 
@@ -61,6 +62,7 @@ export default () => {
                 <SwiperSlide key={index}>
                     <SwiperContainer>
                         <img src={slide.img} alt={slide.text} />
+                        {slide.message}
                         {slide.text === '시작하기' ? (
                             <button onClick={handleStart}>{slide.text}</button>
                         ) : (
