@@ -14,7 +14,7 @@ const SwiperContainer = styled.div`
     align-items: center;
 `;
 
-export default () => {
+export default function OnboardingSwiper () {
     const slides = [
         {
             img: 'https://cdn.inflearn.com/public/main_sliders/f3a0a5ff-a6b0-4f3f-8afb-1b6728bf166d/40143-hero-b-desktop.png',
@@ -73,4 +73,4 @@ export default () => {
             ))}
         </Swiper>
     );
-};
+}

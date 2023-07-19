@@ -1,5 +1,6 @@
-import Swiper from "../components/Swiper";
+
 import styled from 'styled-components';
+import OnboardingSwiper from '../components/OnboardingSwiper';
 
 const StyledOnboarding = styled.div`
     width: 390px;
@@ -10,7 +11,7 @@ const StyledOnboarding = styled.div`
 const OnboardingPage = () => {
     return (
         <StyledOnboarding>
-            <Swiper/>
+            <OnboardingSwiper/>
         </StyledOnboarding>
     );
 }
