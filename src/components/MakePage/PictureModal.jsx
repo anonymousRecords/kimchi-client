@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ModalWrapper = styled.article`
@@ -16,10 +17,25 @@ const ModalWrapper = styled.article`
   align-items: center;
   padding: 16px;
 
-  .title {
+  .file-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .file-input > .title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 16px;
+  }
+
+  .file-input > .name {
+    color: #A9A9A9;
+    margin-bottom: 1rem;
+  }
+
+  .hidden-input {
+    /* input 숨김 처리 */
+    visibility: hidden;
   }
 
   .choice-picture-btn {
@@ -33,6 +49,9 @@ const ModalWrapper = styled.article`
     color: white;
     cursor: pointer;
     margin-bottom: 8px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
   }
 
   .cancel-btn {
@@ -42,13 +61,60 @@ const ModalWrapper = styled.article`
   }
 `;
 
-export default function PictureModal(props) {
+function PictureModal({
+  fileName,
+  setFileName,
+  showImage,
+  hidePictureChoiceHandler,
+}) {
+  const fileNameRef = useRef(null);
+
+  function loadFile(event) {
+    const file = event.target.files[0];
+    setFileName(file.name);
+    // const newImage = URL.createObjectURL(file);
+    showImage();
+  }
+
+  // 제출 버튼을 클릭하여 모달창을 닫습니다.
+  const handleSubmit = () => {
+    hidePictureChoiceHandler();
+  };
+
   return (
     <ModalWrapper>
-        <div className='title'>사진을 선택해주세요.</div>
-        <button className='choice-picture-btn'>카메라로 가져오기</button>
-        <button className='choice-picture-btn'>앨범에서 가져오기</button>
-        <button className='cancel-btn' onClick={props.onHideModal}>취소</button>
+      <div className="file-input">
+        <p className='title'>파일 이름</p>
+        <p className='name' ref={fileNameRef}>
+          {fileName}
+        </p>
+      </div>
+      <div className="button-container">
+        <div className="choice-picture-btn" onClick={() => { handleSubmit(); showImage(); }} >
+          선택하기
+        </div>
+        <input
+          className='hidden-input'
+          type="file"
+          id="chooseFile"
+          name="chooseFile"
+          accept="image/*"
+          onChange={loadFile}
+          style={{ display: 'none' }}
+        />
+      </div>
+      <div className="cancel-btn" onClick={hidePictureChoiceHandler}>
+        취소
+      </div>
     </ModalWrapper>
   );
 }
+
+PictureModal.propTypes = {
+  fileName: PropTypes.string,
+  setFileName: PropTypes.func.isRequired,
+  showImage: PropTypes.func.isRequired,
+  hidePictureChoiceHandler: PropTypes.func.isRequired,
+};
+
+export default PictureModal;
