@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Router, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import OnboardingPage from "./pages/OnboardingPage";
 import PeoplePage from "./pages/PeoplePage";
 import MakePage from "./pages/MakePage";
 import MyPage from "./pages/MyPage";
 import BottomNav from "./components/BottomNav";
+import DecoratePage from "./pages/DecoratePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="people" element={<PeoplePage/>}/>
           <Route path="make" element={<MakePage/>}/>
           <Route path="my" element={<MyPage/>}/>
+          <Route path="decorate" element={<DecoratePage/>}/>
         </Routes>
         <BottomNav/>
       </BrowserRouter>
