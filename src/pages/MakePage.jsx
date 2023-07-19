@@ -38,22 +38,26 @@ const MakePage = () => {
     return (
       <StyledMake>
         <div className='picture-container'>
-          <tr>
+          <table>
+            <tbody>
+              <tr>
             <td>
               <UploadPicture/>
             </td>
             <td>
               <UploadPicture/>
             </td>
-          </tr>
-          <tr>
+              </tr>
+              <tr>
             <td>
               <UploadPicture/>
             </td>
             <td>
               <UploadPicture/>
             </td>
-          </tr>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <button className='next-btn'>(서비스명) 만들기</button>
       </StyledMake>
