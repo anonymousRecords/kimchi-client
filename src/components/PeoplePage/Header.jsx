@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ModalOverlay from '../ModalOverlay';
 import LanguageModal from './LanguageModal';
 import AreaItem from './AreaItem';
