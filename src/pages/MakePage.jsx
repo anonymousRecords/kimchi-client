@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import UploadPicture from '../components/MakePage/UploadPicture';
+import ImageCard from '../components/MakePage/ImageCard';
 
 const StyledMake = styled.div`
     width: 390px;
@@ -8,14 +8,6 @@ const StyledMake = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: #F7F7F7;
-
-    .picture-container {
-        width: 358px;
-        height: 409px;
-        margin-top: 141px;
-        background-color: #E6E6E6;
-        padding: 3px;
-    }
 
     .next-btn {
         width: 358px;
@@ -26,7 +18,7 @@ const StyledMake = styled.div`
         font-size: 18px;
         color: white;
         cursor: pointer;
-        margin-top: 24px;
+        margin-top: 50px;
     }
 
     .next-btn:hover{
@@ -35,31 +27,27 @@ const StyledMake = styled.div`
 `
 
 const MakePage = () => {
+
+  const isValidate = () => {
+    const $imageFrame = document.querySelector('.img-frame');
+    const $imgEmpty = $imageFrame.querySelectorAll('.empty');
+
+    if ($imgEmpty.length > 0) {
+      alert('이미지를 추가해주세요.');
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleValidationClick = () => {
+    isValidate();
+  };
+
     return (
       <StyledMake>
-        <div className='picture-container'>
-          <table>
-            <tbody>
-              <tr>
-            <td>
-              <UploadPicture/>
-            </td>
-            <td>
-              <UploadPicture/>
-            </td>
-              </tr>
-              <tr>
-            <td>
-              <UploadPicture/>
-            </td>
-            <td>
-              <UploadPicture/>
-            </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button className='next-btn'>(서비스명) 만들기</button>
+        <ImageCard/>
+        <button className='next-btn' onClick={handleValidationClick}>(서비스명) 만들기</button>
       </StyledMake>
     );
   }
