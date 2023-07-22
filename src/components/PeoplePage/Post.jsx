@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types'; 
 
-const Post = React.forwardRef(({ post }, ref) => {
-
+const Post = React.forwardRef(function PostComponent({ post }, ref) {
     const postBody = (
         <>
             <h2>{post.title}</h2>
@@ -17,4 +17,13 @@ const Post = React.forwardRef(({ post }, ref) => {
     return content
 })
 
-export default Post
+// PropTypes 추가
+Post.propTypes = {
+    post: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+    }).isRequired,
+};
+
+export default Post;
