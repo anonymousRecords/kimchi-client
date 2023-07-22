@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export default function ModalOverlay(props) {
@@ -12,6 +13,13 @@ export default function ModalOverlay(props) {
     </Overlay>
   );
 }
+
+ModalOverlay.propTypes = {
+  show: PropTypes.bool.isRequired, 
+  onHideModal: PropTypes.func.isRequired,
+  blur: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
 
 const Overlay = styled.div`
   position: fixed;
