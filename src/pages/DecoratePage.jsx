@@ -1,6 +1,8 @@
 import React, { useState } from "react"; // eslint-disable-line no-unused-vars
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import FrameTool from "../components/DecoratePage/FrameTool";
+import PhotoTool from "../components/DecoratePage/PhotoTool";
 
 const StyledDecorate = styled.div`
     width: 390px;
@@ -68,10 +70,17 @@ const StyledDecorate = styled.div`
         background-color: black;
         color: white; /* (Optional) Change text color when selected */
       }
+
+    .tool-container {
+        width: 358px;
+        height: 70px;
+        background-color: blue;
+    }
 `
 
 const DecoratePage = () => {
     const [selectedButton, setSelectedButton] = useState("frame");
+    // const [selectedImages, setSelectedImages] = useState([]); // eslint-disable-line no-unused-vars
   
     return (
       <StyledDecorate>
@@ -104,6 +113,13 @@ const DecoratePage = () => {
               </div>
             </button>
           </div>
+          <div className="card">
+            {/* <ImageCard/> */}
+          </div>
+        </div>
+        <div className="tool-container">
+            {selectedButton === "frame" && <FrameTool/>}
+            {selectedButton === "photo" && <PhotoTool/>}
         </div>
       </StyledDecorate>
     )
