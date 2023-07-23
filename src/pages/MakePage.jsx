@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ImageCard from '../components/MakePage/ImageCard';
+import { useNavigate } from 'react-router-dom';
 
 const StyledMake = styled.div`
     width: 390px;
@@ -14,20 +15,15 @@ const StyledMake = styled.div`
         height: 52px;
         border-radius: 8px;
         border: 0;
-        background-color: #D8D8D8;
+        background-color: ${(props) => (props.disabled ? '#D8D8D8' : 'black')};
         font-size: 18px;
         color: white;
         cursor: pointer;
         margin-top: 50px;
     }
-
-    .next-btn:hover{
-        background-color: black;
-    }
 `
 
 const MakePage = () => {
-
   const isValidate = () => {
     const $imageFrame = document.querySelector('.img-frame');
     const $imgEmpty = $imageFrame.querySelectorAll('.empty');
@@ -40,14 +36,24 @@ const MakePage = () => {
     return true;
   };
 
+  const navigate = useNavigate();
   const handleValidationClick = () => {
-    isValidate();
+    if (isValidate()) {
+      console.log('All images are filled. You can proceed!');
+      navigate('/decorate', { state: {} });
+    }
   };
 
     return (
       <StyledMake>
         <ImageCard/>
-        <button className='next-btn' onClick={handleValidationClick}>(서비스명) 만들기</button>
+        <button
+          className='next-btn'
+          onClick={handleValidationClick}
+          disabled={false} 
+        >
+          (서비스명) 만들기
+        </button>
       </StyledMake>
     );
   }
