@@ -10,21 +10,34 @@ const StyledFrameTool = styled.div`
   flex-direction: row;
   gap: 12px;
   padding-left: 16px;
+`
 
-  .frame-choice {
-    width: 60px;
-    height: 77px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+const FrameChoice = styled.div`
+  width: 60px;
+  height: 77px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .color-box {
     width: 60px;
     height: 60px;
     border-radius: 8px;
     margin-bottom: 2px;
+
+    position: relative;
+
+    &::before {
+      content: url('/assets/icons/frame-check.svg'); 
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px; /* Adjust the size of the SVG as needed */
+      height: 24px; /* Adjust the size of the SVG as needed */
+      opacity: ${(props) => (props.isSelected ? 1 : 0)}; 
+    }
   }
 
   .color-name {
@@ -45,14 +58,14 @@ export default function FrameTool({ onFrameSelect }) {
     return (
         <StyledFrameTool>
         {FrameColor.map((frame) => (
-          <div
-            className="frame-choice"
+          <FrameChoice
             key={frame.color}
             onClick={() => handleFrameClick(frame)} // 클릭 시 handleFrameClick 함수를 호출합니다.
+            isSelected={frame.color === selectedFrame.color} 
           >
             <div className="color-box" style={{ backgroundColor: frame.color }}></div>
             <div className="color-name">{frame.name}</div>
-          </div>
+          </FrameChoice>
         ))}
       </StyledFrameTool>
   );
