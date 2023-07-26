@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import FrameTool from "../components/DecoratePage/FrameTool";
 import PhotoTool from "../components/DecoratePage/PhotoTool";
+import DecorateCard from "../components/DecoratePage/DecorateCard";
 
 const StyledDecorate = styled.div`
     width: 390px;
@@ -16,7 +17,6 @@ const StyledDecorate = styled.div`
         width: 390px;
         height: 73px;
         padding: 16px;
-        background-color: red;
         display: flex;
         justify-content: space-between;
     }
@@ -72,17 +72,26 @@ const StyledDecorate = styled.div`
       }
 
     .tool-container {
-        width: 358px;
-        height: 70px;
-        background-color: blue;
+        display: flex;
+        width: 100%;
+        height: 100px;
+        overflow-x: scroll;
+        // background-color: pink;
+        margin-top: 50px;
+        position: fixed;
+        bottom: 0;
     }
 `
 
 const DecoratePage = () => {
-    const [selectedButton, setSelectedButton] = useState("frame");
-    // const [selectedImages, setSelectedImages] = useState([]); // eslint-disable-line no-unused-vars
-  
-    return (
+  const [selectedButton, setSelectedButton] = useState("frame");
+  const [selectedFrameColor, setSelectedFrameColor] = useState(null); // 선택한 프레임 색상을 상태로 관리합니다.
+
+  const handleFrameSelect = (frame) => {
+    setSelectedFrameColor(frame.color); // 클릭한 프레임의 색상을 상태로 설정합니다.
+  };
+
+  return (
       <StyledDecorate>
         <header>
           <button>
@@ -114,12 +123,14 @@ const DecoratePage = () => {
             </button>
           </div>
           <div className="card">
-            {/* <ImageCard/> */}
+            {/* Pass the handleImagesSelected function to ImageCard */}
           </div>
+          {/* Render DecorateCard and pass the selectedImages */}
+          <DecorateCard frameColor={selectedFrameColor} />
         </div>
         <div className="tool-container">
-            {selectedButton === "frame" && <FrameTool/>}
-            {selectedButton === "photo" && <PhotoTool/>}
+          {selectedButton === "frame" && <FrameTool onFrameSelect={handleFrameSelect} />}
+          {selectedButton === "photo" && <PhotoTool/>}
         </div>
       </StyledDecorate>
     )
