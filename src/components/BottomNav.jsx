@@ -12,7 +12,7 @@ import mySelectImage from "/assets/icons/my-fill.svg";
 const NavBarArticle = styled.article`
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 390px;
   height: 83px;
   background-color: #F7F7F7;
   border-top: 1px solid black;
