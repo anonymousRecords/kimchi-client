@@ -73,10 +73,10 @@ const StyledDecorate = styled.div`
 
     .tool-container {
         display: flex;
-        width: 100%;
+        width: 390px;
         height: 100px;
         overflow-x: scroll;
-        // background-color: pink;
+        // background-color: yellow;
         margin-top: 50px;
         position: fixed;
         bottom: 0;
