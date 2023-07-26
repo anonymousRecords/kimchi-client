@@ -1,71 +1,103 @@
-import styled from 'styled-components';
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const StyledBottomNav = styled.div`
-    height: 5.188rem;
-    position: fixed;
-    bottom: 0;
+import peopleImage from "/assets/icons/people.svg";
+import peopleSelectImage from "/assets/icons/people-fill.svg";
+import makeImage from "/assets/icons/make.svg";
+import makeSelectImage from "/assets/icons/make-fill.svg";
+import myImage from "/assets/icons/my.svg";
+import mySelectImage from "/assets/icons/my-fill.svg";
 
-    display: flex;
-    justify-content: center;
-    border-top-style: solid;
-    border-top-width: 0.5px;
-    background-color: #F7F7F7;
+const NavBarArticle = styled.article`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 83px;
+  background-color: #F7F7F7;
+  border-top: 1px solid black;
+  border-radius: 0px;
+  margin: 0px;
+`;
 
-    button { 
-        width: 8.125rem;
-        height: 2.875rem;
-        padding: 8.58px 0 6px 0;
-        // background-color: red;
-    }
+const TabMenuUl = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // height: 6rem;
+  width: 100%;
+  // border-top: 1px solid ${(props) => props.black};
+`;
 
-    img {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
+const TabMenuLi = styled.li`
+`;
 
-    /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
-    .nav-item {
-        color: grey;
-    }
+const TabMenuLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+`;
+const SelectP = styled.p`
+  font-weight: 600;
+`;
 
-    /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
-    .active {
-        color: red;
-    }
-`
+export default function NavBar({type}) {
 
-export default function BottomNav() {
-    const [activeNav, setActiveNav] = useState(1);
-    return (
-        <StyledBottomNav>
-            <nav>
-                <Link to="/people" onClick={() => setActiveNav(1)}>
-                    <button
-                        className={activeNav === 1 ? "nav-item active" : "nav-item"}
-                    >
-                        <img src='/assets/icons/people.svg' alt='people'/>
-                        <div>people</div>
-                    </button>
-                </Link>
-                <Link to="/make" onClick={() => setActiveNav(2)}>
-                    <button
-                        className={activeNav === 2 ? "nav-item active" : "nav-item"}
-                    >
-                        <img src='/assets/icons/make.svg' alt='people'/>
-                        <div>make</div>
-                    </button>
-                </Link>
-                <Link to="/my" onClick={() => setActiveNav(3)}>
-                    <button
-                        className={activeNav === 3 ? "nav-item active" : "nav-item"}
-                    >
-                        <img src='/assets/icons/mypage.svg' alt='people'/>
-                        <div>mypage</div>
-                    </button>
-                </Link>
-            </nav>
-        </StyledBottomNav>
-    );
+  NavBar.propTypes = {
+    type: PropTypes.oneOf(["people", "make", "my"]).isRequired,
+  };
+
+  const navigate = useNavigate();
+  return (
+    <NavBarArticle>
+      <nav>
+        <TabMenuUl>
+          <TabMenuLi>
+            <TabMenuLink
+              onClick={() => {
+                navigate("/people");
+              }}
+            >
+              {type === "people" ? (
+                <img src={peopleSelectImage} alt="people로 이동" />
+              ) : (
+                <img src={peopleImage} alt="people로 이동" />
+              )}
+              {type === "people" ? <SelectP>people</SelectP> : <p>people</p>}
+            </TabMenuLink>
+          </TabMenuLi>
+          <TabMenuLi>
+            <TabMenuLink
+              onClick={() => {
+                navigate("/make");
+              }}
+            >
+              {type === "make" ? (
+                <img src={makeSelectImage} alt="make으로 이동" />
+              ) : (
+                <img src={makeImage} alt="make으로 이동" />
+              )}
+              {type === "make" ? <SelectP>make</SelectP> : <p>make</p>}
+            </TabMenuLink>
+          </TabMenuLi>
+          <TabMenuLi>
+            <TabMenuLink
+              onClick={() => {
+                navigate("/my");
+              }}
+            >
+              {type === "my" ? (
+                <img src={mySelectImage} alt="my로 이동" />
+              ) : (
+                <img src={myImage} alt="my로 이동" />
+              )}
+              {type === "my" ? <SelectP>mypage</SelectP> : <p>mypage</p>}
+            </TabMenuLink>
+          </TabMenuLi>
+        </TabMenuUl>
+      </nav>
+    </NavBarArticle>
+  );
 }

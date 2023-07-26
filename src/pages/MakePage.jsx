@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ImageCard from '../components/MakePage/ImageCard';
+import BottomNav from '../components/BottomNav.jsx';
 import { useNavigate } from 'react-router-dom';
 
 const StyledMake = styled.div`
@@ -54,6 +55,7 @@ const MakePage = () => {
         >
           (서비스명) 만들기
         </button>
+        <BottomNav type="make"/>
       </StyledMake>
     );
   }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BottomNav from '../components/BottomNav.jsx';
 
 const StyledMy = styled.div`
     width: 390px;
@@ -9,6 +10,7 @@ const MyPage = () => {
     return (
         <StyledMy>
             <div>MyPage</div>
+            <BottomNav type="my"/>
         </StyledMy>
     );
 }

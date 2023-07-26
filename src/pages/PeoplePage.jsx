@@ -1,5 +1,6 @@
 import Header from "../components/PeoplePage/Header";
 import InfiniteScroll from "../components/PeoplePage/InfiniteScroll";
+import BottomNav from '../components/BottomNav.jsx';
 import styled from 'styled-components';
 
 const StyledPeople = styled.div`
@@ -13,6 +14,7 @@ const PeoplePage = () => {
         <StyledPeople>
             <Header/>
             <InfiniteScroll/>
+            <BottomNav type="people"/>
         </StyledPeople>
     );
 }
