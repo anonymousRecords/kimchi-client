@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledImageCard = styled.div`
 .img-frame {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8.813rem;
+    // margin-top: 8.813rem;
     width: 358px;
     height: var(--image-frame-height);
     padding: 6px;
@@ -54,15 +55,19 @@ const StyledImageCard = styled.div`
     object-fit: cover;
 }
 `
+ImageCard.propTypes = {
+  onImagesSelected: PropTypes.func,
+};
 
-export default function ImageCard () {
+export default function ImageCard ({ onImagesSelected }) {
   // 이미지 파일인지 확인
   const fileExtentionCheck = (event) => {
     const file = event.target;
     const fileName = file.files[0].name.toLowerCase();
 
-    if (fileName.endsWith('jpg') || fileName.endsWith('png') || fileName.endsWith('jpeg'))
+    if (fileName.endsWith('jpg') || fileName.endsWith('png') || fileName.endsWith('jpeg')){
       return true;
+    }
 
     alert('png, jpg, jpeg 파일만 등록 가능합니다.');
     file.value = '';
@@ -111,6 +116,9 @@ export default function ImageCard () {
       target.appendChild(img);
       target.classList.remove('empty');
       dragEvent(img);
+      if (typeof onImagesSelected === 'function') {
+        onImagesSelected(event.target.result);
+      }
     };
 
     reader.readAsDataURL(event.target.files[0]);
