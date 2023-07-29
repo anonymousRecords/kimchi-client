@@ -5,6 +5,8 @@ import PeoplePage from "./pages/PeoplePage";
 import MakePage from "./pages/MakePage";
 import MyPage from "./pages/MyPage";
 import DecoratePage from "./pages/DecoratePage";
+import PreviewPage from "./pages/PreviewPage";
+import BoastPage from "./pages/BoastPage";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
           <Route path="make" element={<MakePage/>}/>
           <Route path="my" element={<MyPage/>}/>
           <Route path="decorate" element={<DecoratePage/>}/>
+          <Route path="preview" element={<PreviewPage/>}/>
+          <Route path="boast" element={<BoastPage/>}/>
         </Routes>
       </BrowserRouter>
     </>
