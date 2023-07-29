@@ -1,8 +1,15 @@
 import styled from 'styled-components';
-import { useRef } from 'react'; 
+import React, { useState, useRef } from 'react'; // eslint-disable-line no-unused-vars
+import ModalOverlay from '../ModalOverlay';
+import GoogleModal from './GoogleModal';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 const StyledPreivewCard = styled.div`
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .img-frame {
         display: flex;
@@ -32,9 +39,71 @@ const StyledPreivewCard = styled.div`
         overflow: hidden;
         margin: 6px;
     }
+
+    .preview-btn-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      padding: 16px;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .boast-btn {
+      width: 358px;
+      height: 52px;
+      border-radius: 8px;
+      border: 0;
+      background-color: black;
+      cursor: pointer;
+      font-size: 18px;
+      color: white;
+      font-weight: 600;
+  }
+
+  .save-btn {
+      width: 358px;
+      height: 52px;
+      border-radius: 8px;
+      border: 0;
+      background-color: white;
+      border: 1px solid black;
+      cursor: pointer;
+      font-size: 18px;
+      color: black;
+      font-weight: 600;
+  }
 `
 
 export default function PreivewCard () {
+      //구글 로그인
+      const [showGoogle, setShowGoogle] = useState(false);
+
+      const showGoogleHandler = () => {
+          setShowGoogle(true);
+        };
+      
+      const hideGoogleHandler = () => {
+          setShowGoogle(false);
+      };
+  
+  
+      // 다운로드
+      const onDownloadBtn = async () => {
+          const card = cardRef.current;
+          const filter = (card) => {
+            return card.tagName !== 'BUTTON';
+          };
+      
+          try {
+            const blob = await domtoimage.toBlob(card, { filter: filter });
+            saveAs(blob, 'card.png');
+          } catch (error) {
+            console.error('Error during download:', error);
+          }
+        };
+
   const cardRef = useRef();
     return (
       <StyledPreivewCard>
@@ -50,6 +119,14 @@ export default function PreivewCard () {
             </div>
           </div>
           <input type="file" className="file-input hidden" accept=".jpeg, .png, .jpg" />
+        </div>
+        <div className='preview-btn-container'>
+            <button className='boast-btn' onClick={showGoogleHandler}>자랑하기</button>
+            <button className='save-btn' onClick={onDownloadBtn}>저장하기</button>
+
+            <ModalOverlay blur onHideModal={hideGoogleHandler} show={showGoogle}>
+                <GoogleModal hideGoogleHandler={hideGoogleHandler}/>
+            </ModalOverlay>
         </div>
       </StyledPreivewCard>
       );
