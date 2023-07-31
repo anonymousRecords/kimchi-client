@@ -73,13 +73,11 @@ const StyledDecorate = styled.div`
 
     .tool-container {
         display: flex;
+        justify-content: center;
+        // align-items: center;
         width: 390px;
-        height: 100px;
+        height: 250px;
         overflow-x: scroll;
-        // background-color: yellow;
-        margin-top: 50px;
-        position: fixed;
-        bottom: 0;
     }
 `
 
@@ -122,10 +120,6 @@ const DecoratePage = () => {
               </div>
             </button>
           </div>
-          <div className="card">
-            {/* Pass the handleImagesSelected function to ImageCard */}
-          </div>
-          {/* Render DecorateCard and pass the selectedImages */}
           <DecorateCard frameColor={selectedFrameColor} />
         </div>
         <div className="tool-container">

@@ -1,63 +1,80 @@
-import styled from 'styled-components';
-import ImageCard from '../components/MakePage/ImageCard';
-import BottomNav from '../components/BottomNav.jsx';
-import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
+import BottomNav from "../components/BottomNav.jsx";
+import { useNavigate } from "react-router-dom";
+import ImageBox from "../components/MakePage/ImageBox.jsx";
+import { useRecoilState } from "recoil";
+import { CardImageAtom } from "../recoil/CardImageAtom.jsx";
 
 const StyledMake = styled.div`
-    width: 390px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #F7F7F7;
+  width: 390px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7f7f7;
+`;
 
-    .next-btn {
-        width: 358px;
-        height: 52px;
-        border-radius: 8px;
-        border: 0;
-        background-color: ${(props) => (props.disabled ? '#D8D8D8' : 'black')};
-        font-size: 18px;
-        color: white;
-        cursor: pointer;
-        margin-top: 50px;
-    }
-`
+const ImageContainer = styled.div`
+  display: grid;
+  grid-gap: 6px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 358px;
+  padding: 6px;
+  padding-bottom: 57px;
+  background: #e6e6e6;
+  border: solid 1px #d8d8d8;
+`;
+
+const StyledNextBtn = styled.button`
+  width: 358px;
+  height: 52px;
+  border-radius: 8px;
+  border: 0;
+  background-color: ${(props) => (props.disabled ? "#D8D8D8" : "black")};
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  margin-top: 50px;
+`;
 
 const MakePage = () => {
-  const isValidate = () => {
-    const $imageFrame = document.querySelector('.img-frame');
-    const $imgEmpty = $imageFrame.querySelectorAll('.empty');
-
-    if ($imgEmpty.length > 0) {
-      alert('이미지를 추가해주세요.');
-      return false;
-    }
-
-    return true;
-  };
+  const [imageList, setImageList] = useRecoilState(CardImageAtom);
 
   const navigate = useNavigate();
   const handleValidationClick = () => {
-    if (isValidate()) {
-      console.log('All images are filled. You can proceed!');
-      navigate('/decorate', { state: {} });
-    }
+    console.log("All images are filled. You can proceed!");
+    navigate("/decorate", { state: {} });
   };
 
-    return (
-      <StyledMake>
-        <ImageCard/>
-        <button
-          className='next-btn'
-          onClick={handleValidationClick}
-          disabled={false} 
-        >
-          (서비스명) 만들기
-        </button>
-        <BottomNav type="make"/>
-      </StyledMake>
-    );
-  }
-  
-  export default MakePage;
+  return (
+    <StyledMake>
+      <ImageContainer>
+        {imageList.map((imageBlob, index) => (
+          <ImageBox
+            key={index}
+            imageBlob={imageBlob}
+            onUpload={(image) =>
+              setImageList((prev) =>
+                prev.map((item, i) => (index === i ? image : item))
+              )
+            }
+            onDelete={(image) =>
+              setImageList((prev) =>
+                prev.map((item) => (image === item ? undefined : item))
+              )
+            }
+          />
+        ))}
+      </ImageContainer>
+      <StyledNextBtn
+        onClick={handleValidationClick}
+        disabled={imageList.some((image) => image === undefined)}
+      >
+        (서비스명) 만들기
+      </StyledNextBtn>
+      <BottomNav type="make" />
+    </StyledMake>
+  );
+};
+
+export default MakePage;
