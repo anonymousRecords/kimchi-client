@@ -10,8 +10,6 @@ import myImage from "/assets/icons/my.svg";
 import mySelectImage from "/assets/icons/my-fill.svg";
 
 const NavBarArticle = styled.article`
-  position: fixed;
-  bottom: 0;
   width: 390px;
   height: 83px;
   background-color: #F7F7F7;
@@ -24,9 +22,7 @@ const TabMenuUl = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  // height: 6rem;
   width: 100%;
-  // border-top: 1px solid ${(props) => props.black};
 `;
 
 const TabMenuLi = styled.li`
@@ -39,6 +35,7 @@ const TabMenuLink = styled.a`
   cursor: pointer;
   font-weight: 600;
 `;
+
 const SelectP = styled.p`
   font-weight: 600;
 `;

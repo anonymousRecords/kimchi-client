@@ -5,8 +5,10 @@ import { getPostsPage } from '../../api/axios'
 import styled from 'styled-components';
 
 const StyeldInfiniteScroll = styled.div`
-    margin: 7.063rem 0rem 1rem 0rem;
+    height: 650px;
+    overflow-y: scroll;
     padding: 0.3rem;
+    z-index: -10;
 `
 
 const InfiniteScroll = () => {

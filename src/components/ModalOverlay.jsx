@@ -27,7 +27,6 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 3;
   display: ${props => (props.show ? 'block' : 'none')};
 `;
 const Backdrop = styled.div`

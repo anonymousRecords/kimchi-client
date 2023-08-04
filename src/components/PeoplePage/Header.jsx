@@ -6,16 +6,12 @@ import AreaItem from './AreaItem';
 import { AreaNames } from './AreaNames';
 
 const StyledHeader = styled.div`
-    height: 7.063rem;
-    position: fixed;
-    top: 0;
-
+    width: 390px;
+    height: 113px;
     display: flex;
     flex-direction: column;
-    // align-items: center;
     padding: 19px;
-    background: pink;
-    z-index: 10px;
+    background: #F7F7F7;
 
     .header-first-row {
         display: flex;
