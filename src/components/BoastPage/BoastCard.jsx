@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
 
 const StyledBoastCard = styled.div`
     margin-top: 40px;
@@ -87,12 +86,6 @@ export default function BoastCard () {
             </div>
           </div>
           <input type="file" className="file-input hidden" accept=".jpeg, .png, .jpg" />
-        </div>
-        <div className='boast-btn-container'>
-          <Link to="/search">
-            <button className='boast-btn'>위치 추가하기</button>
-          </Link>
-          <button className='save-btn'>건너뛰기</button>
         </div>
       </StyledBoastCard>
       );
