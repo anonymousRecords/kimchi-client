@@ -1,66 +1,62 @@
-import React, { useState } from 'react'; // eslint-disable-line no-unused-vars
-import styled from 'styled-components';
-import { Link } from "react-router-dom";
-import Autocomplete from 'react-google-autocomplete';
+import GooglePlacesAutocomplete, { getLatLng } from 'react-google-places-autocomplete';
+import { geocodeByPlaceId } from 'react-google-places-autocomplete';
+import { useState } from 'react';
+import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 const StyledSearch = styled.div`
-    width: 390px;
-    height: 71px;
-    background-color: #F7F7F7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .search-bar {
-        width: 318px;
-        height: 48px;
-        border-radius: 8px;
-        background-color: #EEEEEE;
-        border-style: none;
-        padding: 14px;
-    }
+  display: flex;
+  .search-bar {
+    width: 300px;
+    height: 100px;
+    background-color: blue;
+  }
 `
 
-const SearchPage = () => {
-    const [selectedPlace, setSelectedPlace] = useState(null);
+function SearchPage() {
+  const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY
+  const [value, setValue] = useState(null);
+  const navigate = useNavigate();
 
-    const handlePlaceSelect = (place) => {
-        setSelectedPlace(place);
-    }
-
-    return (
-        <StyledSearch>
-            <header>
-                <div className='arrow-back'>
-                    <Link to="/boast">
-                        <img src="/assets/icons/arrow-back.svg"/>
-                    </Link>
-                </div>
-                <Autocomplete
-                        className='search-bar'
-                        onPlaceSelected={handlePlaceSelect}
-                        types={['geocode']}
-                        placeholder="장소를 검색해주세요"
-                    >
-                        {/* <img src='/assets/icons/search.svg' alt='search'/> */}
-                </Autocomplete>
-            </header>
-            {selectedPlace && (
-                <div>
-                    <h2>Selected Place</h2>
-                    <p>{selectedPlace.name}</p>
-                    <p>{selectedPlace.formatted_address}</p>
-                </div>
-            )}
-        </StyledSearch>
-    );
+  return (
+    <StyledSearch>
+      <img src='/assets/icons/arrow-left.svg'/>
+      <GooglePlacesAutocomplete
+        className="search-bar"
+            apiOptions={{ language: 'en' }}
+            autocompletionRequest={{
+              bounds: [
+                { lat: 50, lng: 50 },
+                { lat: 100, lng: 100 }
+              ],
+              componentRestrictions: {
+                country: ['KR'],
+              }
+            }}
+            selectProps={{
+              value,
+              onChange: (value)=>{
+                setValue(value)
+                console.log(value);
+                let place_id = value['value']['place_id']
+                console.log(place_id);
+                geocodeByPlaceId(place_id)
+                  .then(results => {
+                    console.log(results);
+                    return getLatLng(results[0])
+                  }
+                  )
+                  .then(({ lat, lng }) =>{
+                    console.log('Successfully got latitude and longitude', { lat, lng })
+                    navigate('/compelete');
+                  })
+                  .catch(error => console.error(error));
+              },
+            }}
+        apiKey={GOOGLE_API_KEY}
+      />
+    </StyledSearch>
+  );
 }
 
 export default SearchPage;
