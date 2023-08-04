@@ -15,7 +15,7 @@ const StyledHeader = styled.div`
 
     .header-first-row {
         display: flex;
-        gap: 282px;
+        justify-content: space-between;
     }
 
     .header-first-row > div {
