@@ -15,6 +15,7 @@ const StyledMake = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  margin-top: 160px;  
   display: grid;
   grid-gap: 6px;
   grid-template-columns: repeat(2, 1fr);
@@ -35,6 +36,7 @@ const StyledNextBtn = styled.button`
   color: white;
   cursor: pointer;
   margin-top: 50px;
+  margin-bottom: 89px;
 `;
 
 const MakePage = () => {
@@ -43,7 +45,7 @@ const MakePage = () => {
   const navigate = useNavigate();
   const handleValidationClick = () => {
     console.log("All images are filled. You can proceed!");
-    navigate("/decorate", { state: {} });
+    navigate("/frame", { state: {} });
   };
 
   return (

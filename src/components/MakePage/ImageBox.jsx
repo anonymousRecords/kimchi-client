@@ -84,6 +84,7 @@ export default function ImageBox({ imageBlob, onUpload, onDelete }) {
             src="/assets/icons/add-picture.svg"
             width="48"
             height="48"
+            alt="add-img"
             onClick={handleUploadClick}
           />
         )}
