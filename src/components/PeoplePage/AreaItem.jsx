@@ -5,21 +5,36 @@ import PropTypes from 'prop-types';
 const StyledAreaItem = styled.div`
   font-size: 36px;
   font-weight: 800;
+`
 
-  .toggle-container {
-    width: 128px;
-    height: 340px;
-    padding: 12px;
+const ToggleContainer = styled.div`
+  position: fixed;
+  width: 128px;
+  height: 167px;
+  background-color: white;
+  overflow-y: scroll;
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.20);
+`
+
+const AreamName = styled.div`
+  width: 120px;
+  height: 30px;
+  padding: 6px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #A9A9A9;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  &:hover{
+    width: 120px;
+    height: 30px;
     border-radius: 8px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #A9A9A9;
-    background-color: white;
-    cursor: pointer;
-  }
-
-  .toggle-container > div:hover {
-    color: black;
+    background: #000;
+    color: white;
     font-weight: 600;
   }
 `
@@ -43,16 +58,16 @@ export default function AreaItem({ title, content, onContentClick }) {
         <img src='/assets/icons/toggle.svg' alt='toggle' />
       </button>
       {isExpanded && (
-        <div className='toggle-container'>
+        <ToggleContainer>
           {content.map((item, index) => (
-            <div
+            <AreamName
               key={index}
               onClick={() => handleContentClick(item)}
             >
               {item}
-            </div>
+            </AreamName>
           ))}
-        </div>
+        </ToggleContainer>
       )}
     </StyledAreaItem>
   );

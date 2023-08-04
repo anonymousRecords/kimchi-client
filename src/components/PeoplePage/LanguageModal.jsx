@@ -12,30 +12,45 @@ const ModalWrapper = styled.article`
   transform: translate(-50%, -50%);
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
-
-  li {
-    width: 320px;
-    height: 42px;
-    text-align: center;
-    color: #A9A9A9 !important;
-    cursor: pointer;
-  }
-
-  li:hover {
-    color: black !important;
-  }
+  align-items: center;
 `;
+
+const AbledButton = styled.button`
+  width: 320px;
+  height: 42px;
+  text-align: center;
+  color: black !important;
+  cursor: pointer;
+  &:hover {
+    width: 308px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #000;
+    color: white !important;
+    font-weight: 600;
+  }
+`
+
+const DisabledButton = styled.button`
+  width: 320px;
+  height: 42px;
+  text-align: center;
+  color: #D8D8D8;
+  text-align: center;
+  font-size: 16px;
+  cursor: default;
+`
 
 export default function LanguageModal() {
   return (
     <ModalWrapper>
-        <ul>
-            <li>한국어</li>
-            <li>ENGLISH</li>
-            <li>中國語</li>
-            <li>日本語</li>
-        </ul>
+      <AbledButton>한국어</AbledButton>
+      <AbledButton>ENGLISH</AbledButton>
+      <DisabledButton>中國語</DisabledButton>
+      <DisabledButton>日本語</DisabledButton>
     </ModalWrapper>
   );
 }
