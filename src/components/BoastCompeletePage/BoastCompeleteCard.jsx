@@ -7,17 +7,24 @@ const CompeleteCardContainer = styled.div`
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);
 `
 const CardHeader = styled.div`
-    width: 358px;
-    height: 30px;
-    border-radius: 8px 8px 0 0;
-    background-color: white;
-    padding: 7px 0 0 12px;
-    border: solid 1px #d8d8d8;
-    border-bottom: none;
+  width: 358px;
+  height: 30px;
+  border-radius: 8px 8px 0 0;
+  background-color: white;
+  padding: 7px 12px; 0 12px;
+  border: solid 1px #d8d8d8;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
 `
 const UserID = styled.div`
-    font-size: 12px;
-    font-weight: 600;
+  font-size: 12px;
+  font-weight: 600;
+`
+
+const CreateDate = styled.div`
+  color: #A9A9A9;
+  font-size: 12px;
 `
 
 const ImageFrame = styled.div`
@@ -77,6 +84,7 @@ export default function BoastCompeleteCard() {
     <CompeleteCardContainer>
         <CardHeader>
             <UserID>@NEON</UserID>
+            <CreateDate>23-07-01</CreateDate>
         </CardHeader>
         <ImageFrame frameColor={frameColorChoice.color}>
         {imageList.map((imageBlob, index) => (
