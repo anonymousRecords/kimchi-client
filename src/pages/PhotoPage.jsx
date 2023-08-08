@@ -28,6 +28,7 @@ const FrameChoice = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   .color-box {
     width: 60px;
@@ -57,8 +58,9 @@ const FeelingImg = styled.img`
   height: 60px;
   border-radius: 8px;
   margin-bottom: 2px;
-  position: relative;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+  // position: relative;
+  // object-fit: fill;
+  // box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: url("/assets/icons/frame-check.svg");
@@ -88,19 +90,18 @@ const PageIntroduce = styled.div`
 
 const PhotoPage = () => {
   const [selectedPhotoFeeling, setSelectedPhotoFeeling] = useState(
-    PhotoFeeling[0]
-  ); // 선택한 프레임 색상을 상태로 관리합니다.
+    PhotoFeeling[0].name
+  );
   const [photoFeelingChoice, setPhotoFeelingChoice] =
     useRecoilState(PhotoFeelingAtom);
 
-  // Recoil atom인 FrameColorAtom의 상태를 설정하기 위해 useEffect를 사용합니다.
   useEffect(() => {
     setPhotoFeelingChoice(PhotoFeeling);
   }, [setPhotoFeelingChoice]);
 
-  const handleFrameSelect = (feeling) => {
-    setSelectedPhotoFeeling(feeling.name);
-    setPhotoFeelingChoice(feeling);
+  const handlePhotoSelect = (feeling) => {
+    setSelectedPhotoFeeling(feeling.name); 
+    setPhotoFeelingChoice(feeling.name);
   };
 
   console.log("선택된 감정:", photoFeelingChoice);
@@ -118,10 +119,16 @@ const PhotoPage = () => {
         {PhotoFeeling.map((feeling) => (
           <FrameChoice
             key={feeling.img}
-            onClick={() => handleFrameSelect(feeling)}
+            onClick={() => handlePhotoSelect(feeling)}
             isSelected={feeling.name === selectedPhotoFeeling}
           >
-            <FeelingImg src={feeling.beforeImg} />
+            <FeelingImg
+              src={
+                feeling.name === selectedPhotoFeeling
+                  ? feeling.afterImg
+                  : feeling.beforeImg
+              }
+            />
             <div className="feeling-name">{feeling.name}</div>
           </FrameChoice>
         ))}
