@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 
 const ModalWrapper = styled.article`
   background-color: white;
@@ -41,19 +41,19 @@ export default function SkipModal({ hideSkipHandler }) {
 
   return (
     <ModalWrapper>
-      <div className="comment">메인화면으로 돌아갑니다.</div>
+      <div className="comment">Return to the main screen.</div>
       <ConfirmButton
         onClick={() => {
           navigate("/people");
         }}
       >
-        확인
+        Confirm
       </ConfirmButton>
-      <CancelButton onClick={hideSkipHandler}>취소</CancelButton>
+      <CancelButton onClick={hideSkipHandler}>Cancel</CancelButton>
     </ModalWrapper>
   );
 }
 
 SkipModal.propTypes = {
-  hideSkipHandler: PropTypes.func.isRequired, 
+  hideSkipHandler: PropTypes.func.isRequired,
 };

@@ -7,7 +7,7 @@ import { AreaNames } from './AreaNames';
 
 const StyledHeader = styled.div`
     width: 390px;
-    height: 113px;
+    height: 121px;
     display: flex;
     flex-direction: column;
     padding: 19px;

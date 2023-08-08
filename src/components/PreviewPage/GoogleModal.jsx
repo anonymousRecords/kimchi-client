@@ -40,9 +40,9 @@ export default function GoogleModal({hideGoogleHandler}) {
 
   return (
     <ModalWrapper>
-        <div className='modal-guide'>로그인을 후 이용이 가능합니다</div>
+        <div className='modal-guide'>It will be available after you log in.</div>
         <GoogleLoginButton/>
-        <button className='cancel-btn' onClick={handleCancelClick}>취소</button>
+        <button className='cancel-btn' onClick={handleCancelClick}>Cancel</button>
     </ModalWrapper>
   );
 }

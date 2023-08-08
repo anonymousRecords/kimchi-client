@@ -8,6 +8,7 @@ import SkipModal from "../components/BoastPage/SkipModal";
 
 const StyledBoast = styled.div`
   width: 390px;
+  height: 100vh;
   background-color: #f7f7f7;
 `;
 
@@ -66,9 +67,9 @@ const BoastPage = () => {
             navigate("/search");
           }}
         >
-          위치 추가하기
+          Add a location
         </AddLocationButton>
-        <SaveButton onClick={showSkipHandler}>건너뛰기</SaveButton>
+        <SaveButton onClick={showSkipHandler}>Skip</SaveButton>
       </BoastButtonContainer>
 
       <ModalOverlay blur onHideModal={hideSkipHandler} show={showSkip}>

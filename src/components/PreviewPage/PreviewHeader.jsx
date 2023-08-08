@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledPhotoHeader = styled.div`
   width: 362px;
-  height: 96px;
+  height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;

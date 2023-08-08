@@ -28,10 +28,9 @@
   
 .swiper-slide img {
     display: block;
-    width: 14.438rem;
-    height: 13.313rem;
+    width: 290px;
+    height: 578.92px;
     object-fit: fit;    
-    margin-top: 100px;
 }
   
 .swiper-pagination {

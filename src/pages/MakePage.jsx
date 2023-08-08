@@ -7,7 +7,7 @@ import { CardImageAtom } from "../recoil/CardImageAtom.jsx";
 
 const StyledMake = styled.div`
   width: 390px;
-  height: 100vh;
+  height: calc(100vh - 46px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ const StyledMake = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  margin-top: 160px;  
+  margin-top: 160px;
   display: grid;
   grid-gap: 6px;
   grid-template-columns: repeat(2, 1fr);
@@ -49,33 +49,35 @@ const MakePage = () => {
   };
 
   return (
-    <StyledMake>
-      <ImageContainer>
-        {imageList.map((imageBlob, index) => (
-          <ImageBox
-            key={index}
-            imageBlob={imageBlob}
-            onUpload={(image) =>
-              setImageList((prev) =>
-                prev.map((item, i) => (index === i ? image : item))
-              )
-            }
-            onDelete={(image) =>
-              setImageList((prev) =>
-                prev.map((item) => (image === item ? undefined : item))
-              )
-            }
-          />
-        ))}
-      </ImageContainer>
-      <StyledNextBtn
-        onClick={handleValidationClick}
-        disabled={imageList.some((image) => image === undefined)}
-      >
-        (서비스명) 만들기
-      </StyledNextBtn>
+    <>
+      <StyledMake>
+        <ImageContainer>
+          {imageList.map((imageBlob, index) => (
+            <ImageBox
+              key={index}
+              imageBlob={imageBlob}
+              onUpload={(image) =>
+                setImageList((prev) =>
+                  prev.map((item, i) => (index === i ? image : item))
+                )
+              }
+              onDelete={(image) =>
+                setImageList((prev) =>
+                  prev.map((item) => (image === item ? undefined : item))
+                )
+              }
+            />
+          ))}
+        </ImageContainer>
+        <StyledNextBtn
+          onClick={handleValidationClick}
+          disabled={imageList.some((image) => image === undefined)}
+        >
+          Start
+        </StyledNextBtn>
+      </StyledMake>
       <BottomNav type="make" />
-    </StyledMake>
+    </>
   );
 };
 

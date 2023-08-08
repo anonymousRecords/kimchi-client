@@ -19,7 +19,7 @@ const FrameTool = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
-`
+`;
 
 const FrameChoice = styled.div`
   width: 60px;
@@ -35,27 +35,41 @@ const FrameChoice = styled.div`
     border-radius: 8px;
     margin-bottom: 2px;
     position: relative;
-    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
 
     &::before {
-      content: url('/assets/icons/frame-check.svg'); 
+      content: url("/assets/icons/frame-check.svg");
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 24px; 
-      height: 24px; 
-      opacity: ${(props) => (props.isSelected ? 1 : 0)}; 
+      width: 24px;
+      height: 24px;
+      opacity: ${(props) => (props.isSelected ? 1 : 0)};
     }
   }
   .color-name {
     font-size: 12px;
   }
-`
+`;
+
+const PageIntroduce = styled.div`
+  width: 100%;
+  height: 80px;
+  padding-left: 16px;
+  padding-top: 18px;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
 
 const FramePage = () => {
   const [selectedFrameColor, setSelectedFrameColor] = useState("black"); // 선택한 프레임 색상을 상태로 관리합니다.
-  const [frameColorChoice, setFrameColorChoice] = useRecoilState(FrameColorAtom);
+  const [frameColorChoice, setFrameColorChoice] =
+    useRecoilState(FrameColorAtom);
 
   // Recoil atom인 FrameColorAtom의 상태를 설정하기 위해 useEffect를 사용합니다.
   useEffect(() => {
@@ -72,6 +86,11 @@ const FramePage = () => {
   return (
     <StyledFrame>
       <FrameHeader />
+      <PageIntroduce>
+        Choose your favorite color!
+        <br />
+        It will be applied to the frame.
+      </PageIntroduce>
       <DecorateCard frameColor={selectedFrameColor} />
       <FrameTool>
         {FrameColor.map((frame) => (

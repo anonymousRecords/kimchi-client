@@ -75,8 +75,8 @@ export default function PreviewButton ({cardRef}) {
 
     return(
         <StyledPreviewButton>
-            <button className='boast-btn' onClick={showGoogleHandler}>자랑하기</button>
-            <button className='save-btn' onClick={onDownloadBtn}>저장하기</button>
+            <button className='boast-btn' onClick={showGoogleHandler}>Show off</button>
+            <button className='save-btn' onClick={onDownloadBtn}>Download</button>
 
             <ModalOverlay blur onHideModal={hideGoogleHandler} show={showGoogle}>
                 <GoogleModal hideGoogleHandler={hideGoogleHandler}/>

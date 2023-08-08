@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const StyledBoastComeplete = styled.div`
   width: 390px;
+  height: calc(100vh - 71px);
   background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
@@ -49,26 +50,28 @@ const BoastButton = styled.button`
 const BoastComepletePage = () => {
   const navigate = useNavigate();
   return (
-    <StyledBoastComeplete>
+    <>
       <BoastCompeleteHeader />
-      <BoastCompeleteCard />
-      <ButtonContainer>
-        <ResetLocationButton
-          onClick={() => {
-            navigate("/search");
-          }}
-        >
-          위치 재설정하기
-        </ResetLocationButton>
-        <BoastButton
-          onClick={() => {
-            navigate("/people");
-          }}
-        >
-          자랑하기
-        </BoastButton>
-      </ButtonContainer>
-    </StyledBoastComeplete>
+      <StyledBoastComeplete>
+        <BoastCompeleteCard />
+        <ButtonContainer>
+          <ResetLocationButton
+            onClick={() => {
+              navigate("/search");
+            }}
+          >
+            Location reset
+          </ResetLocationButton>
+          <BoastButton
+            onClick={() => {
+              navigate("/people");
+            }}
+          >
+            Show off
+          </BoastButton>
+        </ButtonContainer>
+      </StyledBoastComeplete>
+    </>
   );
 };
 

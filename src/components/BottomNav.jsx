@@ -11,11 +11,16 @@ import mySelectImage from "/assets/icons/my-fill.svg";
 
 const NavBarArticle = styled.article`
   width: 390px;
-  height: 83px;
+  height: 46px;
   background-color: #F7F7F7;
   border-top: 1px solid black;
   border-radius: 0px;
+  padding-top: 6px;
   margin: 0px;
+  // display: flex;
+  // justify-content: space-between;
+  // flex-direction: column;
+  // align-items: center;
 `;
 
 const TabMenuUl = styled.ul`
@@ -26,6 +31,7 @@ const TabMenuUl = styled.ul`
 `;
 
 const TabMenuLi = styled.li`
+  margin: 0;
 `;
 
 const TabMenuLink = styled.a`
@@ -34,10 +40,23 @@ const TabMenuLink = styled.a`
   align-items: center;
   cursor: pointer;
   font-weight: 600;
+  margin: 0;
 `;
 
+const NavImg = styled.img`
+  width: 24px;
+  height: 24px;
+`
+
+const P = styled.p`
+  font-size: 10px;
+  margin: 0;
+`
+
 const SelectP = styled.p`
+  font-size: 10px;
   font-weight: 600;
+  margin: 0;
 `;
 
 export default function NavBar({type}) {
@@ -58,11 +77,11 @@ export default function NavBar({type}) {
               }}
             >
               {type === "people" ? (
-                <img src={peopleSelectImage} alt="people로 이동" />
+                <NavImg src={peopleSelectImage} alt="people로 이동" />
               ) : (
-                <img src={peopleImage} alt="people로 이동" />
+                <NavImg src={peopleImage} alt="people로 이동" />
               )}
-              {type === "people" ? <SelectP>people</SelectP> : <p>people</p>}
+              {type === "people" ? <SelectP>people</SelectP> : <P>people</P>}
             </TabMenuLink>
           </TabMenuLi>
           <TabMenuLi>
@@ -72,11 +91,11 @@ export default function NavBar({type}) {
               }}
             >
               {type === "make" ? (
-                <img src={makeSelectImage} alt="make으로 이동" />
+                <NavImg src={makeSelectImage} alt="make으로 이동" />
               ) : (
-                <img src={makeImage} alt="make으로 이동" />
+                <NavImg src={makeImage} alt="make으로 이동" />
               )}
-              {type === "make" ? <SelectP>make</SelectP> : <p>make</p>}
+              {type === "make" ? <SelectP>make</SelectP> : <P>make</P>}
             </TabMenuLink>
           </TabMenuLi>
           <TabMenuLi>
@@ -86,11 +105,11 @@ export default function NavBar({type}) {
               }}
             >
               {type === "my" ? (
-                <img src={mySelectImage} alt="my로 이동" />
+                <NavImg src={mySelectImage} alt="my로 이동" />
               ) : (
-                <img src={myImage} alt="my로 이동" />
+                <NavImg src={myImage} alt="my로 이동" />
               )}
-              {type === "my" ? <SelectP>mypage</SelectP> : <p>mypage</p>}
+              {type === "my" ? <SelectP>mypage</SelectP> : <P>mypage</P>}
             </TabMenuLink>
           </TabMenuLi>
         </TabMenuUl>
