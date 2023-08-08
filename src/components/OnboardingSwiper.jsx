@@ -14,20 +14,22 @@ const SwiperContainer = styled.div`
     align-items: center;
 `;
 
+const OnboardingButton = styled.button`
+    position: fixed;
+    top: 450px;
+`
+
 export default function OnboardingSwiper () {
     const slides = [
         {
-            img: 'https://cdn.inflearn.com/public/main_sliders/f3a0a5ff-a6b0-4f3f-8afb-1b6728bf166d/40143-hero-b-desktop.png',
-            text: `슬라이드1`,
+            img: 'public/assets/images/onboarding1.svg',
         },
         {
-            img: 'https://cdn.inflearn.com/public/main_sliders/f3a0a5ff-a6b0-4f3f-8afb-1b6728bf166d/40143-hero-b-desktop.png',
-            text: `슬라이드2`,
+            img: 'public/assets/images/onboarding2.svg',
         },
         {
-            img: '/assets/icons/logo.svg',
-            text: `시작하기`,
-            message: 'For foreigner, Tour-Photo social media.',
+            img: 'public/assets/images/onboarding3.svg',
+            text: `Start`,
         },
     ];
 
@@ -63,8 +65,8 @@ export default function OnboardingSwiper () {
                     <SwiperContainer>
                         <img src={slide.img} alt={slide.text} />
                         {slide.message}
-                        {slide.text === '시작하기' ? (
-                            <button onClick={handleStart}>{slide.text}</button>
+                        {slide.text === 'Start' ? (
+                            <OnboardingButton onClick={handleStart}>{slide.text}</OnboardingButton>
                         ) : (
                             slide.text
                         )}
