@@ -5,6 +5,8 @@ import PhotoCard from "../components/PhotoPage/PhotoCard";
 import { PhotoFeeling } from "../components/PhotoPage/PhotoFeeling";
 import { useRecoilState } from "recoil";
 import { PhotoFeelingAtom } from "../recoil/PhotoFeelingAtom";
+import FeelingModal from "../components/PhotoPage/FeelingModal";
+import FeelingOverlay from "../components/PhotoPage/FeelingOverlay";
 
 const StyledFrame = styled.div`
   width: 390px;
@@ -90,7 +92,7 @@ const PageIntroduce = styled.div`
 
 const PhotoPage = () => {
   const [selectedPhotoFeeling, setSelectedPhotoFeeling] = useState(
-    PhotoFeeling[0].name
+    PhotoFeeling[0]
   );
   const [photoFeelingChoice, setPhotoFeelingChoice] =
     useRecoilState(PhotoFeelingAtom);
@@ -100,11 +102,18 @@ const PhotoPage = () => {
   }, [setPhotoFeelingChoice]);
 
   const handlePhotoSelect = (feeling) => {
-    setSelectedPhotoFeeling(feeling.name); 
-    setPhotoFeelingChoice(feeling.name);
+    setSelectedPhotoFeeling(feeling);
+    setPhotoFeelingChoice(feeling);
   };
 
   console.log("선택된 감정:", photoFeelingChoice);
+
+  // Feeling 모달창 관리
+  const [showFeeling, setShowFeeling] = useState(true);
+
+  const showFeelingHandler = () => {
+    setShowFeeling(true);
+  };
 
   return (
     <StyledFrame>
@@ -114,17 +123,20 @@ const PhotoPage = () => {
         <br />
         AI will be applied to your photos!
       </PageIntroduce>
-      <PhotoCard />
+      <PhotoCard showFeeling={showFeeling} />
       <FrameTool>
         {PhotoFeeling.map((feeling) => (
           <FrameChoice
             key={feeling.img}
-            onClick={() => handlePhotoSelect(feeling)}
+            onClick={() => {
+              handlePhotoSelect(feeling);
+              showFeelingHandler();
+            }}
             isSelected={feeling.name === selectedPhotoFeeling}
           >
             <FeelingImg
               src={
-                feeling.name === selectedPhotoFeeling
+                feeling === selectedPhotoFeeling
                   ? feeling.afterImg
                   : feeling.beforeImg
               }
@@ -133,6 +145,9 @@ const PhotoPage = () => {
           </FrameChoice>
         ))}
       </FrameTool>
+      <FeelingOverlay blur show={showFeeling}>
+        <FeelingModal />
+      </FeelingOverlay>
     </StyledFrame>
   );
 };
