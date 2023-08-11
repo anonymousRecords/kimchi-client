@@ -91,15 +91,8 @@ const PageIntroduce = styled.div`
 `;
 
 const PhotoPage = () => {
-  const [selectedPhotoFeeling, setSelectedPhotoFeeling] = useState(
-    PhotoFeeling[0]
-  );
-  const [photoFeelingChoice, setPhotoFeelingChoice] =
-    useRecoilState(PhotoFeelingAtom);
-
-  useEffect(() => {
-    setPhotoFeelingChoice(PhotoFeeling);
-  }, [setPhotoFeelingChoice]);
+  const [photoFeelingChoice, setPhotoFeelingChoice] = useRecoilState(PhotoFeelingAtom);
+  const [selectedPhotoFeeling, setSelectedPhotoFeeling] = useState(photoFeelingChoice);
 
   const handlePhotoSelect = (feeling) => {
     setSelectedPhotoFeeling(feeling);
@@ -136,7 +129,7 @@ const PhotoPage = () => {
           >
             <FeelingImg
               src={
-                feeling === selectedPhotoFeeling
+                feeling.name === selectedPhotoFeeling.name
                   ? feeling.afterImg
                   : feeling.beforeImg
               }
@@ -145,7 +138,7 @@ const PhotoPage = () => {
           </FrameChoice>
         ))}
       </FrameTool>
-      <FeelingOverlay blur show={showFeeling}>
+      <FeelingOverlay blur show={showFeeling.toString()}>
         <FeelingModal />
       </FeelingOverlay>
     </StyledFrame>

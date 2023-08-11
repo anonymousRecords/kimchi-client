@@ -1,8 +1,6 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { PhotoFeelingAtom } from "../../recoil/PhotoFeelingAtom";
-import { useState, useEffect } from "react"; 
-import { PhotoFeeling } from "./PhotoFeeling";
 
 const ModalWrapper = styled.article`
   background-color: transparent;
@@ -39,15 +37,14 @@ const AiComment = styled.div`
 
 export default function FeelingModal() {
   const feelingChoice = useRecoilValue(PhotoFeelingAtom);
-  const [modalImage, setModalImage] = useState(PhotoFeeling[0].beforeImg);
 
-  useEffect(() => {
-    setModalImage(feelingChoice.beforeImg);
-  }, [feelingChoice]);
+  const imageSrc = feelingChoice === '/assets/icons/mad-w.svg'
+  ? '/assets/icons/mad-w.svg'
+  : feelingChoice.beforeImg;
 
   return (
     <ModalWrapper>
-      <FeelingImg src={modalImage} />
+      <FeelingImg src = {imageSrc}/>
       <AiComment>AI is reflecting your mood.</AiComment>
     </ModalWrapper>
   );

@@ -41,7 +41,7 @@ export default function PhotoCard() {
   const frameColorChoice = useRecoilValue(FrameColorAtom);
 
   return (
-    <ImageFrame frameColor={frameColorChoice.color}>
+    <ImageFrame frameColor={frameColorChoice}>
       {imageList.map((imageBlob, index) => (
         <StyledImageWrapper key={index}>
           <StyledImage src={URL.createObjectURL(imageBlob)} />
