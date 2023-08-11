@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"; // eslint-disable-line no-unused-vars
 import styled from "styled-components";
-import DecorateCard from "../components/DecoratePage/DecorateCard";
+import FrameCard from "../components/FramePage/FrameCard";
 import FrameHeader from "../components/FramePage/FrameHeader";
 import { useRecoilState } from "recoil";
 import { FrameColorAtom } from "../recoil/FrameColorAtom";
@@ -67,18 +67,12 @@ const PageIntroduce = styled.div`
 `;
 
 const FramePage = () => {
-  const [selectedFrameColor, setSelectedFrameColor] = useState("black"); // 선택한 프레임 색상을 상태로 관리합니다.
-  const [frameColorChoice, setFrameColorChoice] =
-    useRecoilState(FrameColorAtom);
-
-  // Recoil atom인 FrameColorAtom의 상태를 설정하기 위해 useEffect를 사용합니다.
-  useEffect(() => {
-    setFrameColorChoice(FrameColor);
-  }, [setFrameColorChoice]);
+  const [frameColorChoice, setFrameColorChoice] = useRecoilState(FrameColorAtom);
+  const [selectedFrameColor, setSelectedFrameColor] = useState(frameColorChoice);
 
   const handleFrameSelect = (frame) => {
-    setSelectedFrameColor(frame.color); // 클릭한 프레임의 색상을 상태로 설정합니다.
-    setFrameColorChoice(frame); // 선택된 프레임 정보를 frameColorChoice에 저장합니다.
+    setFrameColorChoice(frame.color); 
+    setSelectedFrameColor(frame.color); 
   };
 
   console.log("선택된 프레임:", frameColorChoice);
@@ -91,7 +85,7 @@ const FramePage = () => {
         <br />
         It will be applied to the frame.
       </PageIntroduce>
-      <DecorateCard frameColor={selectedFrameColor} />
+      <FrameCard frameColor={selectedFrameColor} />
       <FrameTool>
         {FrameColor.map((frame) => (
           <FrameChoice
