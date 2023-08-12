@@ -86,7 +86,7 @@ export default function BoastCompeleteCard() {
             <UserID>@NEON</UserID>
             <CreateDate>23-07-01</CreateDate>
         </CardHeader>
-        <ImageFrame frameColor={frameColorChoice.color}>
+        <ImageFrame frameColor={frameColorChoice}>
         {imageList.map((imageBlob, index) => (
             <StyledImageWrapper key={index}>
             <StyledImage src={URL.createObjectURL(imageBlob)} />
