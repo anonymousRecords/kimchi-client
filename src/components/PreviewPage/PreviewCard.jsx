@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { useRecoilValue } from "recoil";
 import { CardImageAtom } from "../../recoil/CardImageAtom";
 import { FrameColorAtom } from "../../recoil/FrameColorAtom";
@@ -10,13 +11,13 @@ const ImageFrame = styled.div`
   grid-template-columns: repeat(2, 1fr);
   width: 358px;
   height: 409px;
-  padding: 6px;
-  padding-bottom: 57px;
+  padding: 6px 6px 57px 6px;
+  // padding-bottom: 57px;
   border: solid 1px #d8d8d8;
   margin-top: 92px;
   margin-bottom: 28px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.20);
-`
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+`;
 
 const StyledImageWrapper = styled.div`
   position: relative;
@@ -36,17 +37,25 @@ const StyledImage = styled.img`
   height: 100%;
 `;
 
-export default function PreviewCard() {
+const StyledCard = styled.div`
+`
+
+const PreviewCard = React.forwardRef((props, ref) => {
   const imageList = useRecoilValue(CardImageAtom);
   const frameColorChoice = useRecoilValue(FrameColorAtom);
-
   return (
-    <ImageFrame frameColor={frameColorChoice}>
-      {imageList.map((imageBlob, index) => (
-        <StyledImageWrapper key={index}>
-          <StyledImage src={URL.createObjectURL(imageBlob)} />
-        </StyledImageWrapper>
-      ))}
-    </ImageFrame>
+    <StyledCard ref={ref}>
+      <ImageFrame frameColor={frameColorChoice}>
+        {imageList.map((imageBlob, index) => (
+          <StyledImageWrapper key={index}>
+            <StyledImage src={URL.createObjectURL(imageBlob)} />
+          </StyledImageWrapper>
+        ))}
+      </ImageFrame>
+    </StyledCard>
   );
-}
+});
+
+PreviewCard.displayName = "PreviewCard";
+
+export default PreviewCard;
