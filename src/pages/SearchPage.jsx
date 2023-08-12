@@ -1,68 +1,64 @@
-import GooglePlacesAutocomplete, {
-  getLatLng,
-} from "react-google-places-autocomplete";
-import { geocodeByPlaceId } from "react-google-places-autocomplete";
-import { useState } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import SearchHeader from "../components/SearchPage/SearchHeader";
+import React, { useState } from 'react' // eslint-disable-line no-unused-vars
+import MapContainer from '../components/SearchPage/MapContainer'
+import styled from 'styled-components';
+import { Link } from "react-router-dom";
+
+const SearchPage = () => {
+  const [InputText, setInputText] = useState('')
+  const [Place, setPlace] = useState('')
+
+  const onChange = (e) => {
+    setInputText(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setPlace(InputText)
+  }
+
+  return (
+    <StyledSearch>
+      <SearchHeader className="inputForm" onSubmit={handleSubmit}>
+        <Link to="/boast">
+          <img src="/assets/icons/arrow-back.svg"/>
+        </Link>
+        <SearchBar placeholder="Please search for a location" onChange={onChange} value={InputText} onFocus={() => setInputText('')}/>
+      </SearchHeader>
+      <MapContainer searchPlace={Place} />
+    </StyledSearch>
+  )
+}
 
 const StyledSearch = styled.div`
   width: 390px;
   height: 100vh;
-  background: #F7F7F7;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 16px;
-`;
+  background-color: #f7f7f7;
+`
 
+const SearchHeader = styled.form`
+  width: 390px;
+  height: 71px;
 
-function SearchPage() {
-  const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-  const [value, setValue] = useState(null);
-  const navigate = useNavigate();
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 16px;
+`
 
-  return (
-    <StyledSearch>
-      <SearchHeader/>
-      <GooglePlacesAutocomplete
-        className="search-bar"
-        apiOptions={{ language: "en" }}
-        autocompletionRequest={{
-          bounds: [
-            { lat: 50, lng: 50 },
-            { lat: 100, lng: 100 },
-          ],
-          componentRestrictions: {
-            country: ["KR"],
-          },
-        }}
-        selectProps={{
-          value,
-          onChange: (value) => {
-            setValue(value);
-            console.log(value);
-            let place_id = value["value"]["place_id"];
-            console.log(place_id);
-            geocodeByPlaceId(place_id)
-              .then((results) => {
-                console.log(results);
-                return getLatLng(results[0]);
-              })
-              .then(({ lat, lng }) => {
-                console.log("Successfully got latitude and longitude", {
-                  lat,
-                  lng,
-                });
-                navigate("/compelete");
-              })
-              .catch((error) => console.error(error));
-          },
-        }}
-        apiKey={GOOGLE_API_KEY}
-      />
-    </StyledSearch>
-  );
-}
+const SearchBar = styled.input`
+  width: 318px;
+  height: 48px;
+  border-radius: 8px;
+  background: #EEE;
+  border: none;
+  background-image: url('/assets/icons/search.svg');
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  padding-left: 40px;
+  margin-left: 16px;
+`
 
 export default SearchPage;
