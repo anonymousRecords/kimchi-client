@@ -9,6 +9,9 @@ import SkipModal from "../components/BoastPage/SkipModal";
 const StyledBoast = styled.div`
   width: 390px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #f7f7f7;
 `;
 
