@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { CardImageAtom } from "../../recoil/CardImageAtom";
 import { FrameColorAtom } from "../../recoil/FrameColorAtom";
+import { SearchAtom } from "../../recoil/SearchAtom";
 
 const CompeleteCardContainer = styled.div`
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);
@@ -79,12 +80,20 @@ const LocationContent = styled.div`
 export default function BoastCompeleteCard() {
   const imageList = useRecoilValue(CardImageAtom);
   const frameColorChoice = useRecoilValue(FrameColorAtom);
+  const searchList = useRecoilValue(SearchAtom);
 
+  // 날짜
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`; 
+  
   return (
     <CompeleteCardContainer>
         <CardHeader>
             <UserID>@NEON</UserID>
-            <CreateDate>23-07-01</CreateDate>
+            <CreateDate>{formattedDate}</CreateDate>
         </CardHeader>
         <ImageFrame frameColor={frameColorChoice}>
         {imageList.map((imageBlob, index) => (
@@ -94,8 +103,8 @@ export default function BoastCompeleteCard() {
         ))}
         </ImageFrame>
         <CardFooter>
-            <LocationName>가천대학교 글로벌캠퍼스</LocationName>
-            <LocationContent>경기도 성남시 수정구 성남대로 1342</LocationContent>
+            <LocationName>{searchList[0]}</LocationName>
+            <LocationContent>{searchList[1]}</LocationContent>
         </CardFooter>
     </CompeleteCardContainer>
   );
