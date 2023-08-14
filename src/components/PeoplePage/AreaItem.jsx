@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { AreaNames } from './AreaNames';
+import { AreaUrlAtom } from '../../recoil/AreaUrlAtom';
+import { useRecoilState } from 'recoil';
 
 const StyledAreaItem = styled.div`
   font-size: 36px;
@@ -25,32 +28,40 @@ const AreamName = styled.div`
   padding: 6px;
   font-size: 16px;
   font-weight: 400;
-  color: #A9A9A9;
+  color: ${({ status }) => (status === 'close' ? '#D8D8D8' : 'black')};
   background-color: white;
-  cursor: pointer;
+  cursor: ${({ status }) => (status === 'close' ? 'not-allowed' : 'pointer')};
   display: flex;
   align-items: center;
-  &:hover{
-    width: 120px;
-    height: 30px;
-    border-radius: 8px;
-    background: #000;
-    color: white;
-    font-weight: 600;
-  }
+  ${({ status }) => (status === 'open' ? `
+    &:hover{
+      width: 120px;
+      height: 30px;
+      border-radius: 8px;
+      background: #000;
+      color: white;
+      font-weight: 600;
+    }
+  ` : '')}
 `
 
-export default function AreaItem({ title, content, onContentClick }) {
+export default function AreaItem({ title, onContentClick }) {
+  const [areaUrl, setAreaUrl] = useRecoilState(AreaUrlAtom);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const handleContentClick = (clickedTitle) => {
-    onContentClick(clickedTitle);
-    setIsExpanded(false);
+  const handleContentClick = (clickedTitle, url, status) => {
+    if (status !== 'close') {
+      onContentClick(clickedTitle, url);
+      setAreaUrl(url);
+      console.log(areaUrl);
+      setIsExpanded(false);
+    }
   };
+
 
   return (
     <StyledAreaItem>
@@ -60,12 +71,13 @@ export default function AreaItem({ title, content, onContentClick }) {
       </button>
       {isExpanded && (
         <ToggleContainer>
-          {content.map((item, index) => (
+          {AreaNames.map((item, index) => (
             <AreamName
               key={index}
-              onClick={() => handleContentClick(item)}
+              onClick={() => handleContentClick(item.name, item.url, item.status)}
+              status={item.status}
             >
-              {item}
+              {item.name}
             </AreamName>
           ))}
         </ToggleContainer>
@@ -76,6 +88,5 @@ export default function AreaItem({ title, content, onContentClick }) {
 
 AreaItem.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.arrayOf(PropTypes.string).isRequired,
   onContentClick: PropTypes.func.isRequired,
 };
