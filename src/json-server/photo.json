@@ -1,5 +1,5 @@
 {
-  "photo" : [
+  "seoul" : [
     {
       "id": 1,
       "googldId": "@Neon",
@@ -35,6 +35,120 @@
       "photoFourth": "https://i.pinimg.com/564x/98/9f/af/989fafb14fc5b3e1cf3b055343cea43e.jpg",
       "placeName": "Banpo Hangang Park",
       "placeAddress": "40, Sinbanpo-ro 11-gil, Seocho-gu, Seoul, Republic of Korea"
+    }
+  ],
+  "busan" : [
+    {
+      "id": 1,
+      "googldId": "@Neon",
+      "createDate": "23-08-01",
+      "frameColor": "black",
+      "photoFirst": "https://i.pinimg.com/564x/7e/9d/d6/7e9dd6d3a789613f0780638a76211305.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/91/41/12/914112f13024bce5d8e1f509706b6596.jpg",
+      "photoThird": "https://i.pinimg.com/564x/95/45/cc/9545cc843260d6bcbb8ed7d38a4b5853.jpg",
+      "photoFourth": "https://i.pinimg.com/736x/ec/7a/be/ec7abe086b905983abc266a366cf4216.jpg",
+      "placeName": "Haeundae",
+      "placeAddress": "59, Yangun-ro 37beon-gil, Haeundae-gu, Busan, Republic of Korea"
+    },
+    {
+      "id": 2,
+      "googldId": "@Changmin",
+      "createDate": "23-08-13",
+      "frameColor": "pink",
+      "photoFirst": "https://i.pinimg.com/564x/e3/2e/91/e32e9139e0e56646284a2ceb2bd41752.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/ec/f2/83/ecf283e1bc6dfe3eeee3bdadfb850d5f.jpg",
+      "photoThird": "https://i.pinimg.com/564x/b8/9f/cc/b89fccfb493bc5c7615269af48a1b4cc.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/41/89/cf/4189cf32e036bb79cece42cedf2c3b26.jpg",
+      "placeName": "Haeundae Dongbaekseom Island",
+      "placeAddress": "710-1, U-dong, Haeundae-gu, Busan, Republic of Korea"
+    },
+    {
+      "id": 3,
+      "googldId": "@Chapdo",
+      "createDate": "23-08-13",
+      "frameColor": "#CBEDE5",
+      "photoFirst": "https://i.pinimg.com/736x/09/44/96/094496ff04245a5e812506243041f0a8.jpg",
+      "photoSecond": "https://i.pinimg.com/736x/4c/f1/eb/4cf1eb2b9748770a4de057a652993d1f.jpg",
+      "photoThird": "https://i.pinimg.com/564x/91/6d/f4/916df4e5ae97d678491cfac8806a7308.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/6f/fb/6c/6ffb6c9af10cbba4864d32bbe6346ae1.jpg",
+      "placeName": "Jagalchi Market",
+      "placeAddress": "52, Jagalchihaean-ro, Jung-gu, Busan, Republic of Korea"
+    }
+  ],
+  "jeju" : [
+    {
+      "id": 1,
+      "googldId": "@Neon",
+      "createDate": "23-08-01",
+      "frameColor": "white",
+      "photoFirst": "https://i.pinimg.com/564x/34/8e/27/348e277a99dd750f98bde32486486145.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/98/5a/7c/985a7c07661dd8aaca7aa7ceafd23235.jpg",
+      "photoThird": "https://i.pinimg.com/564x/6b/47/2b/6b472bda373dd9428fad12cf01e2d3de.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/21/17/b7/2117b728dd98191c952a2bedf8c99fa6.jpg",
+      "placeName": "Seongsan Sunrise Peak",
+      "placeAddress": "1, Seongsanri, Seongsaneup, Seogwiposi, Jeju-do, Republic of Korea"
+    },
+    {
+      "id": 2,
+      "googldId": "@Changmin",
+      "createDate": "23-08-13",
+      "frameColor": "black",
+      "photoFirst": "https://i.pinimg.com/736x/92/08/b1/9208b1c7f69d1a35b5fba1f1cf32f5e4.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/b2/9b/de/b29bde9190256c6c586a2af831fc7330.jpg",
+      "photoThird": "https://i.pinimg.com/564x/a8/b4/d0/a8b4d0b076ce3200ddceca23c822a2e3.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/ae/ee/15/aeee152797a5afc2c3b19f2201b510bc.jpg",
+      "placeName": "Mt. Hanlla",
+      "placeAddress": "15-1, Topyeong-dong, Seogwipo-si, Jeju-do, Republic of Korea"
+    },
+    {
+      "id": 3,
+      "googldId": "@Chapdo",
+      "createDate": "23-08-13",
+      "frameColor": "black",
+      "photoFirst": "https://i.pinimg.com/564x/65/e7/04/65e7044cef50ba07c0c6f63650c9f2eb.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/5f/8d/8f/5f8d8fdfc6fb92937971fb50e0de037b.jpg",
+      "photoThird": "https://i.pinimg.com/564x/7c/18/18/7c18182bc8cbd4ae34b375f48983a542.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/cb/d0/1c/cbd01c80d2ef746089f9ba70fc6af0c7.jpg",
+      "placeName": "Aewol",
+      "placeAddress": "Aewol-eup, Jeju-si, Jeju-do, SEOUL 695-900 Rep. of KOREA"
+    }
+  ],
+  "jeonbuk" : [
+    {
+      "id": 1,
+      "googldId": "@Neon",
+      "createDate": "23-08-01",
+      "frameColor": "pink",
+      "photoFirst": "https://i.pinimg.com/564x/e6/21/c0/e621c07036a86f4121c39ba5524c68a6.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/10/36/db/1036db6c69e8dd9a405beac0c497f8e9.jpg",
+      "photoThird": "https://i.pinimg.com/564x/af/48/9d/af489dcdee983a7232f7ac3e4def7136.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/8c/6a/75/8c6a752329166e448046862d7c736029.jpg",
+      "placeName": "Jeonju Hanok Village",
+      "placeAddress": "99, Girindaero, Wansangu, Jeonjusi, Jeollabuk-do, Republic of Korea"
+    },
+    {
+      "id": 2,
+      "googldId": "@Changmin",
+      "createDate": "23-08-13",
+      "frameColor": "#CBEDE5",
+      "photoFirst": "https://i.pinimg.com/564x/66/87/ac/6687ac93710be7ee6c89ff2348d9b528.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/ee/79/07/ee79078c2384b77541c8fd164d3b422b.jpg",
+      "photoThird": "https://i.pinimg.com/564x/11/89/87/1189870b75d6227d9848acf9d1e685b3.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/c0/9c/9b/c09c9bc5c7716496e083465a3a0a8a42.jpg",
+      "placeName": "Gunsan",
+      "placeAddress": "162, Beonyeong-ro, Gunsan-si, Jeollabuk-do, Republic of Korea"
+    },
+    {
+      "id": 3,
+      "googldId": "@Chapdo",
+      "createDate": "23-08-13",
+      "frameColor": "pink",
+      "photoFirst": "https://i.pinimg.com/736x/2e/5e/26/2e5e260b0928463badcef94a2dd64ae0.jpg",
+      "photoSecond": "https://i.pinimg.com/564x/59/b1/cc/59b1cc4494c37bbefd81744d6f6c8e49.jpg",
+      "photoThird": "https://i.pinimg.com/736x/b9/0c/17/b90c177e5403c1bc48ef96a87453571e.jpg",
+      "photoFourth": "https://i.pinimg.com/564x/22/ae/ce/22aeceec47fcdca88d34e4ce312b5bdc.jpg",
+      "placeName": "Gochangeupseong Walled Town",
+      "placeAddress": "45, Mujangeupseong-gil, Jeollabuk-do, Republic of Korea"
     }
   ]
 }

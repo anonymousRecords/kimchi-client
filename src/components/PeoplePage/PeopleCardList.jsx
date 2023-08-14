@@ -1,23 +1,35 @@
 import styled from "styled-components";
-import { getPeopleCard } from "../../api/people";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
+import { AreaUrlAtom } from "../../recoil/AreaUrlAtom";
+import { useRecoilValue } from "recoil";
 
 export default function PeopleCardList() {
   const [peopleCardData, setPeopleCardData] = useState([]);
+
+  const SERVER_URL = "http://localhost:3001";
+  const areaUrl = useRecoilValue(AreaUrlAtom);
+  const completeUrl = SERVER_URL + areaUrl;
+  console.log(completeUrl);
+
+  const getPeopleCard = useCallback(async () => {
+    const response = await axios.get(completeUrl);
+    return response.data;
+  }, [completeUrl]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getPeopleCard();
-        setPeopleCardData(response.data);
+        setPeopleCardData(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, []);
+  }, [getPeopleCard]); 
 
-  console.log("카드", peopleCardData);
+  console.log("데이터", peopleCardData)
 
   return (
     <StyledPeopleCard>
@@ -52,12 +64,10 @@ export default function PeopleCardList() {
 }
 
 const StyledPeopleCard = styled.div`
-  // width: 398px;
   height: calc(100vh - 167px);
   overflow-y: scroll;
   padding: 0 16px;
   padding-bottom: 16px;
-  // z-index: -10;
   display: flex;
   flex-direction: column;
   align-items: center;
