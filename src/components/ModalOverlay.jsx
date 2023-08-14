@@ -22,6 +22,7 @@ ModalOverlay.propTypes = {
 };
 
 const Overlay = styled.div`
+  z-index: 10;
   position: fixed;
   top: 0;
   bottom: 0;

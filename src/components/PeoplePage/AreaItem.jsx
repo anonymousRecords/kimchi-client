@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const StyledAreaItem = styled.div`
   font-size: 36px;
   font-weight: 800;
+  z-index: 10;
 `
 
 const ToggleContainer = styled.div`
