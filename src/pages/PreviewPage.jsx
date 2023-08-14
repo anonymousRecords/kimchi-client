@@ -79,13 +79,14 @@ const PageIntroduce = styled.div`
 `;
 
 const StyledPreviewButton = styled.div`
+  width: 100%;
+  height: calc(100vh - 529px);
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   padding: 16px;
   gap: 8px;
-  margin-top: 24px;
 `;
 
 const BoastButton = styled.button`
