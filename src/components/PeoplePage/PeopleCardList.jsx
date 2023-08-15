@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { AreaUrlAtom } from "../../recoil/AreaUrlAtom";
 import { useRecoilValue } from "recoil";
+// import CopyToClipboard from "react-copy-to-clipboard";
 
 export default function PeopleCardList() {
   const [peopleCardData, setPeopleCardData] = useState([]);
@@ -27,9 +28,12 @@ export default function PeopleCardList() {
       }
     };
     fetchData();
-  }, [getPeopleCard]); 
+  }, [getPeopleCard]);
 
-  console.log("데이터", peopleCardData)
+  console.log("데이터", peopleCardData);
+
+  // const [copied, setCopied] = useState(false);
+  // console.log(copied);
 
   return (
     <StyledPeopleCard>
@@ -39,7 +43,7 @@ export default function PeopleCardList() {
             <UserID>{card.googldId}</UserID>
             <CreateDate>{card.createDate}</CreateDate>
           </CardHeader>
-          <ImageFrame frameColor={card.frameColor}>
+          <ImageFrame framecolor={card.framecolor}>
             <StyledImageWrapper>
               <StyledImage src={card.photoFirst} />
             </StyledImageWrapper>
@@ -99,7 +103,7 @@ const CreateDate = styled.div`
 `;
 
 const ImageFrame = styled.div`
-  background-color: ${(props) => props.frameColor};
+  background-color: ${(props) => props.framecolor};
   display: grid;
   grid-gap: 6px;
   grid-template-columns: repeat(2, 1fr);
