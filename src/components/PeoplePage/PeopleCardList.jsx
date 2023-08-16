@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { AreaUrlAtom } from "../../recoil/AreaUrlAtom";
 import { useRecoilValue } from "recoil";
-// import CopyToClipboard from "react-copy-to-clipboard";
 
 export default function PeopleCardList() {
   const [peopleCardData, setPeopleCardData] = useState([]);
@@ -32,8 +31,15 @@ export default function PeopleCardList() {
 
   console.log("데이터", peopleCardData);
 
-  // const [copied, setCopied] = useState(false);
-  // console.log(copied);
+  // 클립보드
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("클립보드에 링크가 복사되었습니다.");
+    } catch (e) {
+      alert("복사에 실패하였습니다");
+    }
+  };
 
   return (
     <StyledPeopleCard>
@@ -59,7 +65,11 @@ export default function PeopleCardList() {
           </ImageFrame>
           <CardFooter>
             <LocationName>{card.placeName}</LocationName>
-            <LocationContent>{card.placeAddress}</LocationContent>
+            <LocationContent
+              onClick={() => handleCopyClipBoard(card.placeAddress)}
+            >
+              {card.placeAddress}
+            </LocationContent>
           </CardFooter>
         </CompeleteCardContainer>
       ))}
