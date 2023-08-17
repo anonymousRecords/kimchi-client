@@ -38,7 +38,7 @@ const FrameChoice = styled.div`
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
 
     &::before {
-      content: url("/assets/icons/frame-check.svg");
+      content: url('${props => (props.isSelected && props.isWhite ? '/assets/icons/check_black.svg' : '/assets/icons/frame-check.svg')}');
       position: absolute;
       top: 50%;
       left: 50%;
@@ -92,6 +92,7 @@ const FramePage = () => {
             key={frame.color}
             onClick={() => handleFrameSelect(frame)}
             isSelected={frame.color === selectedFrameColor}
+            isWhite={frame.color === 'white'}
           >
             <div
               className="color-box"
