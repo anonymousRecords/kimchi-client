@@ -62,7 +62,6 @@ export default function ImageBox({ imageBlob, onUpload, onDelete }) {
 
   const handleChange = (event) => {
     const file = event.target.files[0];
-
     onUpload(file);
   };
 

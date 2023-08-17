@@ -12,7 +12,7 @@ const CardHeader = styled.div`
   height: 30px;
   border-radius: 8px 8px 0 0;
   background-color: white;
-  padding: 7px 12px; 0 12px;
+  padding: 7px 12px 0 12px;
   border: solid 1px #d8d8d8;
   border-bottom: none;
   display: flex;
