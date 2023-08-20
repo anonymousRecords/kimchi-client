@@ -12,7 +12,7 @@ import mySelectImage from "/assets/icons/my-fill.svg";
 const NavBarArticle = styled.article`
   width: 390px;
   height: 46px;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-top: 1px solid black;
   border-radius: 0px;
   padding-top: 6px;
@@ -46,12 +46,12 @@ const TabMenuLink = styled.a`
 const NavImg = styled.img`
   width: 24px;
   height: 24px;
-`
+`;
 
 const P = styled.p`
   font-size: 10px;
   margin: 0;
-`
+`;
 
 const SelectP = styled.p`
   font-size: 10px;
@@ -59,61 +59,60 @@ const SelectP = styled.p`
   margin: 0;
 `;
 
-export default function NavBar({type}) {
+NavBar.propTypes = {
+  type: PropTypes.oneOf(["people", "make", "my"]).isRequired,
+};
 
-  NavBar.propTypes = {
-    type: PropTypes.oneOf(["people", "make", "my"]).isRequired,
-  };
-
+export default function NavBar({ type }) {
   const navigate = useNavigate();
   return (
-    <NavBarArticle>
-      <nav>
-        <TabMenuUl>
-          <TabMenuLi>
-            <TabMenuLink
-              onClick={() => {
-                navigate("/people");
-              }}
-            >
-              {type === "people" ? (
-                <NavImg src={peopleSelectImage} alt="people로 이동" />
-              ) : (
-                <NavImg src={peopleImage} alt="people로 이동" />
-              )}
-              {type === "people" ? <SelectP>people</SelectP> : <P>people</P>}
-            </TabMenuLink>
-          </TabMenuLi>
-          <TabMenuLi>
-            <TabMenuLink
-              onClick={() => {
-                navigate("/make");
-              }}
-            >
-              {type === "make" ? (
-                <NavImg src={makeSelectImage} alt="make으로 이동" />
-              ) : (
-                <NavImg src={makeImage} alt="make으로 이동" />
-              )}
-              {type === "make" ? <SelectP>make</SelectP> : <P>make</P>}
-            </TabMenuLink>
-          </TabMenuLi>
-          <TabMenuLi>
-            <TabMenuLink
-              onClick={() => {
-                navigate("/my");
-              }}
-            >
-              {type === "my" ? (
-                <NavImg src={mySelectImage} alt="my로 이동" />
-              ) : (
-                <NavImg src={myImage} alt="my로 이동" />
-              )}
-              {type === "my" ? <SelectP>mypage</SelectP> : <P>mypage</P>}
-            </TabMenuLink>
-          </TabMenuLi>
-        </TabMenuUl>
-      </nav>
-    </NavBarArticle>
+      <NavBarArticle>
+        <nav>
+          <TabMenuUl>
+            <TabMenuLi>
+              <TabMenuLink
+                onClick={() => {
+                  navigate("/people");
+                }}
+              >
+                {type === "people" ? (
+                  <NavImg src={peopleSelectImage} alt="people로 이동" />
+                ) : (
+                  <NavImg src={peopleImage} alt="people로 이동" />
+                )}
+                {type === "people" ? <SelectP>people</SelectP> : <P>people</P>}
+              </TabMenuLink>
+            </TabMenuLi>
+            <TabMenuLi>
+              <TabMenuLink
+                onClick={() => {
+                  navigate("/make");
+                }}
+              >
+                {type === "make" ? (
+                  <NavImg src={makeSelectImage} alt="make으로 이동" />
+                ) : (
+                  <NavImg src={makeImage} alt="make으로 이동" />
+                )}
+                {type === "make" ? <SelectP>make</SelectP> : <P>make</P>}
+              </TabMenuLink>
+            </TabMenuLi>
+            <TabMenuLi>
+              <TabMenuLink
+                onClick={() => {
+                  navigate("/my");
+                }}
+              >
+                {type === "my" ? (
+                  <NavImg src={mySelectImage} alt="my로 이동" />
+                ) : (
+                  <NavImg src={myImage} alt="my로 이동" />
+                )}
+                {type === "my" ? <SelectP>mypage</SelectP> : <P>mypage</P>}
+              </TabMenuLink>
+            </TabMenuLi>
+          </TabMenuUl>
+        </nav>
+      </NavBarArticle>
   );
 }
