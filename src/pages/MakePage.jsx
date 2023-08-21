@@ -76,7 +76,7 @@ const MakePage = () => {
           Start
         </StyledNextBtn>
       </StyledMake>
-      <BottomNav type="make" />
+      <BottomNav type="make"/>
     </>
   );
 };

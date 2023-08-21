@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import { AreaUrlAtom } from "../../recoil/AreaUrlAtom";
 import { useRecoilValue } from "recoil";
+import PropTypes from 'prop-types';
 
-export default function PeopleCardList() {
+export default function PeopleCardList({ isscrollingcardlist: propIsscrollingcardlist }) {
   const [peopleCardData, setPeopleCardData] = useState([]);
 
   const SERVER_URL = "http://localhost:3001";
@@ -41,8 +42,30 @@ export default function PeopleCardList() {
     }
   };
 
+  // 스크롤
+  const [isScrollingCardList, setIsScrollingCardList] = useState(false);
+  const scrollTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeoutRef.current);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    setIsScrollingCardList(true);
+    clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsScrollingCardList(false);
+    }, 200);
+  };
+
+  console.log('스크롤', isScrollingCardList);
+
   return (
-    <StyledPeopleCard>
+    <StyledPeopleCard isscrollingcardlist={propIsscrollingcardlist} onScroll={handleScroll}>
       {peopleCardData.map((card, index) => (
         <CompeleteCardContainer key={index}>
           <CardHeader>
@@ -160,3 +183,7 @@ const LocationName = styled.div`
 const LocationContent = styled.div`
   font-size: 12px;
 `;
+
+PeopleCardList.propTypes = {
+  isscrollingcardlist: PropTypes.bool.isRequired, 
+};
